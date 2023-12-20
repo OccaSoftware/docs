@@ -10,7 +10,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://www.occasoftware.com/discord',
   },
-  docsRepositoryBase: 'https://github.com/occasoftware/docs',
+  docsRepositoryBase: 'https://github.com/OccaSoftware/docs/tree/main',
   footer: {
     text: '© 2023 OccaSoftware',
   },
