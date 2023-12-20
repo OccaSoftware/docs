@@ -1,0 +1,20 @@
+# Altos Wind Zone
+
+Altos Wind Zone lets you control Altos clouds and VFX from a Wind Zone.
+
+## Quick Start
+
+1. Add a Wind Zone to project.
+1. Open that Game Object in the Inspector
+1. Add Component > OccaSoftware > Altos > Altos Wind Zone
+
+## Use
+
+To configure the cloud and VFX speed, set the Cloud Modifier and VFX Modifiers in the component.
+
+```cs
+void Start()
+{
+    AltosWindZone windZone = FindObjectOfType<AltosWindZone>.cloudModifier = 0.2f;
+}
+```

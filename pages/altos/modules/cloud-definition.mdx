@@ -1,0 +1,103 @@
+# Cloud Definition
+
+Altos includes a system for rendering physically based volumetric and 2D clouds in real time in Unity.
+
+## Cloud Definition Overview
+
+The cloud definition comprises three parts: Common Configuration, Low Altitude Configuration, and High Altitude Configuration.
+
+### Common
+
+Common Configuration lets you set general rendering, lighting, atmosphere, and shadow parameters.
+
+### Low Altitude
+
+Low Altitude Configuration lets you set up the Modeling, Lighting, Weather, and Cloud Shape parameters for low-altitude clouds. These are the big, fluffy ones close to the ground.
+
+### High Altitude
+
+High Altitude Configuration lets you set up the Density, Cloud Coverage, and input Textures for the high-altitude clouds. These are the high-up, thin, wispy ones.
+
+## Cloud Shadows
+
+Cloud Shadows is an experimental feature that supports dynamic, real-time cloud shadows using volumetric clouds.
+
+By default, Altos will sample the cloud shadow map as a post-process. Unfortunately, this will apply shadows to emissive objects, lights, unlit materials, etc.
+
+To get physically-based results, sample from the cloud shadow texture. Use the CloudShadows.hlsl include file and call the GetCloudShadowAttenuation method, passing in the World Space position of the fragment you'd like to shade.
+
+## Cloud Fly-Through
+
+You have two options for how Altos handles the Z Distance when rendering clouds. The clouds can either (1) respect depth-writing geometry and occlude objects behind them or (2) ignore depth-writing geometry and render as part of the skybox.
+
+If you want volumetric clouds to render as part of the skybox, set the Rendering Mode to Background Only Clouds.
+
+If you want volumetric clouds to render as part of the scene, set the Rendering Mode to Render In Front of Opaque Geometry.
+
+You cannot have a mix of modes (1) and (2) where you respect some depth-writing geometry and ignore others.
+
+## Rendering Off-Screen Clouds
+
+Altos does not render off-screen clouds, but Altos volumetric clouds do account for lighting and shadows from off-screen clouds.
+
+## Properties
+
+### Low Altitude - Modeling
+
+| Property                         | Usage                                                  |
+|----------------------------------|--------------------------------------------------------|
+| Extinction Coefficient           | The cloud density                                      |
+| Cloudiness                       | The overall amount of clouds in the sky                |
+| Cloudiness density influence     | How cloud density increases as cloudiness increases    |
+| Height density influence         | How cloud density increases as height increases        |
+| Cloud density curve              | How cloud density modulates over height                |
+| Distant Coverage: Start Distance | Distance at which we switch to distant coverage factor |
+| Distant Coverage: Cloudiness     | Amount of clouds in the sky in the distance            |
+
+### Low Altitude - Lighting
+
+| Property                          | Usage                                   |
+|-----------------------------------|-----------------------------------------|
+| Max Lighting Distance             | Upper limit on the lighting raymarch    |
+| Multiple Scattering: Octaves      | Number of multiple scattering octaves   |
+| Multiple Scattering: Amp Gain     | How to attenuate intensity each octave  |
+| Multiple Scattering: Density Gain | How to attenuate density of each octave |
+
+### Low Altitude - Weather
+
+| Property        | Usage                                                  |
+|-----------------|--------------------------------------------------------|
+| Weathermap Type | Option to use a procedural or texture-based weathermap |
+| Octaves         | Number of octaves                                      |
+| Gain            | Gain factor for each octave                            |
+| Frequency       | Frequency for each octave                              |
+| Velocity        | Wind speed of the weathermap layer                     |
+
+### Low Altitude - Base Clouds
+
+| Property | Usage                                        |
+|----------|----------------------------------------------|
+| Type     | The type of noise to use for the cloud shape |
+| Quality  | Resolution for the cloud noise               |
+| Scale    | Scales the noise texture                     |
+| Velocity | Wind speed of the layer                      |
+
+### Low Altitude - Cloud Detail
+
+| Property       | Usage                                                       |
+|----------------|-------------------------------------------------------------|
+| Type           | The type of noise to use for the cloud shape                |
+| Quality        | Resolution for the cloud noise                              |
+| Intensity      | Strength of the detail noise erosion                        |
+| Height Mapping | Height factor over which detail noise increases from 0 to 1 |
+| Scale          | Scales the noise texture                                    |
+| Velocity       | Wind speed of the layer                                     |
+
+### Low Altitude - Cloud Distortion
+
+| Property  | Usage                                               |
+|-----------|-----------------------------------------------------|
+| Texture   | Input distortion texture                            |
+| Intensity | Strength of the distortion effect                   |
+| Scale     | Scales the noise texture                            |
+| Speed     | Rate at which the noise texture moves through space |

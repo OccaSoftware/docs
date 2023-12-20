@@ -1,0 +1,48 @@
+Font Assets
+===========
+
+Introduction to Font Assets
+---------------------------
+
+Ascii depends on specially-formatted font assets in order to render text properly.
+
+These font assets are kind of like a texture atlas. Each character of the font should be arranged in rows along a single column.
+
+Here is an example of a valid font asset texture. This particular asset includes 5 characters. Ascii expects the font characters to be arranged in order of highest luminance to lowest luminance.
+
+In other words, Ascii will map the highest luminance colors to the topmost character in the sheet. It will map the lowest luminance colors to the bottommost character.
+
+![](/img/ascii/font-assets/montserrat.png)
+
+Authoring Font Assets
+---------------------
+
+Ascii does not currently include an editor utility to construct font assets. You can author font assets using image manipulation tools like Photoshop or design tools like Figma.
+
+Ascii expects the font characters to be aligned to the center of the font asset file. You can left-justify, center, or right-justify the individual characters, but they must exist in the middle column to be sampled correctly. In the following example, the font characters are centered and center aligned in the middle column. The texture is 3 columns wide.
+
+![](/img/ascii/font-assets/gloria.png)
+
+Font Settings
+-------------
+
+Ascii expects you to provide information about the source font file to the Renderer Feature. Ascii needs this information in order to correctly sample and render the font data from the font asset.
+
+You will need to tell Ascii the number of characters in the font asset and the font ratio.
+
+The number of characters is straightforward - simply a count of the number of characters. If you have 5 characters, enter 5.
+
+The ratio represents the number of column widths in the source texture. In the following example, the texture is 3 column widths wide. Therefore, you should enter a font ratio of 3.
+
+![](/img/ascii/font-assets/share-tech-mono.png)
+
+Font-Related Display Settings
+-----------------------------
+
+The font is automatically scaled to fit within a chunk. You can control the chunk size using the Column Count in the Display Settings.
+
+The font is not automatically re-scaled according to the aspect ratio. In other words, the font characters may be clipped when using aspect ratios other than 1:1 in the Display Settings.
+
+You can customize the font color and Font Color Strength from the Display Settings.
+
+The font color is sampled from the pixelated output buffer by default. You can override that color by setting a Font Color and increasing the Font Color Strength to 1.

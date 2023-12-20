@@ -1,15 +1,35 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
+  "-- Rendering": {
+    "type": "separator",
+    "title": "Rendering"
   },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "altos": "Altos",
+  "ascii": "Ascii",
+  "auto-exposure": "Auto Exposure",
+  "buto": "Buto",
+  "gaussian-blur": "Gaussian Blur",
+  "local-global-illumination": "Local Global Illumination",
+  "lspp": "LSPP",
+  "motion-blur": "Motion Blur",
+  "responsive-smokes": "Responsive Smokes",
+  "-- Shaders": {
+    "type": "separator",
+    "title": "Shaders"
+  },
+  "cloud-shadows": "Cloud Shadows",
+  "outline-objects": "Outline Objects",
+  "toon-kit-2": "Toon Kit 2",
+  "super-simple-skybox": "Super Simple Skybox",
+  "ultimate-lit-shader": "Ultimate Lit Shader",
+  "-- Physics": {
+    "type": "separator",
+    "title": "Physics"
+  },
+  "ballistics": "Ballistics",
+  "-- VFX": {
+    "type": "separator",
+    "title": "VFX"
+  },
+  "fireworks": "Fireworks"
 }

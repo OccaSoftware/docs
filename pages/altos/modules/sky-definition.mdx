@@ -1,0 +1,51 @@
+Sky Definition
+==============
+
+The Sky Definition consists of three main conceptual modules: The DateTime system, the Period of Day system, and the Environmental Lighting System.
+
+![](/img/sky-definition.webp)
+
+The DateTime System
+-------------------
+
+The DateTime system is the core of the day-night cycle. Altos tracks a continuous System Time clock, which starts at an arbitrary 0 value and continues infinitely through to the max float value. The CurrentDay is tracked as the System Time / 24. The CurrentTime is reported as System Time % 24. You can set the time or day via script.
+
+You can set the Initial Time (range [0, INF]), which is the system time that will be set when you enter play mode and the system time that will be used when in editor.
+
+The Period of Day Keyframe System
+---------------------------------
+
+The Period of Day system represents a set of keyframes that describe the sky appearance based on the CurrentTime value. Altos automatically handles day overflow and other considerations.
+
+You can have any number of Periods of Day.
+
+A Period of Day is a Keyframe. Each Keyframe defines the end point of a smooth, continuous transition from the previous Keyframe.
+
+You can customize the Start Time, Name, Sky Color, Equator Color, and Ground Color for each Keyframe.
+
+Note: The Ground Color only affects the Ambient Lighting system.
+
+The name property for each keyframe is just used to make it easy for you to identify and define different keyframes. It does not need to be unique, and it is not used for any internal Altos systems.
+
+The Environmental Lighting System
+---------------------------------
+
+Altos automatically overrides your Environmental Lighting to match the Altos sky.
+
+This ensures that your scene geometry's ambient lighting is always consistent with Altos, regardless of the time of day.
+
+Altos uses the trilight (gradient) lighting mode and sets the sky, equator, and ground color based on the interpolated colors according to the Time of Day system.
+
+Altos offers two options relating to the automatic Environmental Lighting System: Exposure, and Saturation.
+
+Exposure relates to how bright the ambient lighting is.
+
+Saturation relates to how colorful (or saturated) the ambient lighting is.
+
+These properties are accessible in the Sky Definition UI as well as via script:
+
+`environmentLightingExposure`
+
+`environmentLightingSaturation`
+
+These two options enable you to set more neutral sky lighting but more extreme ambient lighting or vice versa.

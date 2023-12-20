@@ -1,0 +1,85 @@
+# Managing time
+
+## Overview
+
+The Sky Definition controls the time options for your project. To set the start time when you hit play, configure the `Initial Time`. To set the current time during gameplay, set the `Current Time`.
+
+Altos moves the time forward each frame. To set the rate of time, configure the `Day-Night Cycle Duration`. This value is set in hours. To make your day-night cycle take 1 real-world hour, set the day-night cycle duration to a value of 1.
+
+## API
+
+All time properties and methods are in the Sky Definition. To access the Sky Definition, get a reference to the Sky Director, then access the Sky Definition.
+
+```cs
+SkyDefinition skyDefinition = AltosSkyDirector.Instance.skyDefinition;
+```
+
+## Getting the time
+
+To get the current day time, call `CurrentTime`, `CurrentTime01`, or `CurrentDay` getter like
+
+```cs
+float currentTime = AltosSkyDirector.Instance.skyDefinition.CurrentTime;
+float currentTime01 = AltosSkyDirector.Instance.skyDefinition.CurrentTime01;
+int currentDay = AltosSkyDirector.Instance.skyDefinition.CurrentDay;
+```
+
+```cs
+/// <summary>
+/// Represents the current in-game time. A function of the initial time of day and the day-night cycle duration.
+/// <br>Range: [0, 24]</br>
+/// </summary>
+public float CurrentTime
+{
+    get => timeSystem % 24;
+}
+
+/// <summary>
+/// Represents the current in-game time as a percentage between 0 and 1.
+/// </summary>
+public float CurrentTime01
+{
+    get => CurrentTime / 24f;
+}
+
+/// <summary>
+/// Represents the number of 24-hour periods (in Altos time) elapsed from a timeSystem value of 0.
+/// </summary>
+public int CurrentDay
+{
+    get => (int)timeSystem / 24;
+}
+```
+
+## Setting the time
+
+To set the current time, call `SetSystemTime` or `SetDayAndTime`.
+
+To set the time to 1 day and 12 hours, call these methods like this:
+
+```cs
+AltosSkyDirector.Instance.skyDefinition.SetSystemTime(36f);
+AltosSkyDirector.Instance.skyDefinition.SetDayAndTime(1, 12f);
+```
+
+```cs
+/// <summary>
+/// Sets the system time directly. The system time is continuous and includes the day count (i.e., 1 day + 12h = 36).
+/// </summary>
+public void SetSystemTime(float timeSystem)
+{
+    this.timeSystem = timeSystem;
+    UpdatePeriod();
+    UpdateSky();
+}
+
+/// <summary>
+/// Sets the current day and time of day directly. Time will be wrapped in the range [0, 24]. Day has a min value of 0.
+/// </summary>
+public void SetDayAndTime(int day, float time)
+{
+    timeSystem = (Mathf.Max(0, day) * 24) + (time % 24);
+    UpdatePeriod();
+    UpdateSky();
+}
+```

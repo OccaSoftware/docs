@@ -1,0 +1,77 @@
+# Get Started
+
+This article will describe how to get started with our Altos package for Unity URP. In this guide, we will install Altos and enable it in your scene.
+
+## Install Altos
+
+To install Altos, you first need to license it from the Unity Asset Store. After you license the asset, you import it to your project. You import it using the Unity Package Manager.
+
+When you import Altos to your project, you will see a new directory in your Packages folder. Look for ~/Packages/Altos/~.
+
+## Add the Altos Renderer Feature
+
+You must add the Altos renderer feature to your scriptable render pipeline. Here's how:
+
+1. Click on your Universal Renderer Data
+1. Click Add Renderer Feature
+1. Choose Altos
+
+For more help, read [Unity's help article](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@13.0/manual/urp-renderer-feature-how-to-add.html).
+
+You do not need to configure the Renderer Feature.
+You configure Altos using the Definition configuration files. You will attach these to your Sky Director in your scene. We'll do this now.
+
+## Create the Altos Sky Director
+
+Altos includes a nifty editor feature that makes it easy to set up the Altos Sky Director in a new scene.
+
+In your menu bar, click GameObject -> Altos -> Sky Director.
+
+Altos will create a new Sky Director GameObject in your scene.
+Altos will also create all the Definition configuration files that you need.
+
+![](/img/sky-director-setup.webp)
+
+Altos also creates two children objects: the Sun and the Moon. These are set up with reasonable default settings. We will come back to these in a more focused article that will review how to use Sky Objects in Altos.
+
+![](/img/sun-setup.webp)
+
+## Set up your pre-transparency pass
+
+Altos renders the clouds behind transparent objects. Therefore, Transparent objects always render in front of Altos clouds. Sometimes, you want to transparent objects behind clouds. For example, you will want to render the Aurora VFX behind the Altos clouds.
+
+In this example, we will use the "TransparentFX" layer. However, you can use your own custom layer if you choose to do so.
+
+### Set up your Filtering Options
+
+1. Open your Universal Renderer Data.
+1. In your Filtering: Transparent Layer Mask, remove the "TransparentFX" layer.
+
+![](/img/universal-renderer-data.png)
+
+### Configure your Render Objects feature
+
+1. Add a Render Objects feature to your Universal Renderer Data.
+1. Set the Event to "After Rendering Opaques."
+1. Set the Queue to "Transparent."
+1. Set the Layer Mask to "TransparentFX."
+
+![](/img/render-objects-feature.png)
+
+### Configure your Game Object
+
+1. Set the Layer Mask on your Aurora to "TransparentFX."
+![](/img/set-layer.png)
+
+Your Aurora VFX will now render behind the Volumetric Clouds. To render any Transparent material behind the clouds, assign it to the "TransparentFX" layer mask.
+
+Configure and Use Altos
+-----------------------
+
+Altos is now installed and enabled in your project.
+
+You can configure each Definition file. You can re-use Definition files in different scenes. Or, you can use unique Definition files in each scene. Configure these Definitions to fit your project's requirements and look goals.
+
+You can also configure the Sun and Moon Sky Objects or add more Sky Objects.
+
+In a separate article, we will review on each aspect of Altos in more detail.

@@ -1,0 +1,37 @@
+# Visual Effects
+
+Altos includes ambient visual effects.
+
+To render transparent materials behind clouds, see the [pre-transparency pass section of our getting started doc](/altos/getting-started#set-up-your-pre-transparency-pass).
+
+
+* Auroras
+* Shooting Stars
+* Comets
+* Rain
+* Snow
+* Lightning
+
+This section will give an overview on usage.
+
+## Rain and Snow
+
+Rain and Snow are weather effects.
+
+Weather Effects are integrated with the Altos precipitation system. When it rains, the `WeatherEffect` component will automatically set the altos_PrecipitationAmount property in the Visual Effect.
+
+Weather Effects are integrated with the Wind Zone system. When you have an Altos Wind Zone enabled, the Weather Effect will receive the wind.
+
+## Auroras
+
+Auroras are placeable meshes. They are integrated with the Altos day-night cycle.
+
+## Comets and Shooting Stars
+
+Comets and Shooting Stars are world-space VFX. They are integrated with the Altos day-night cycle. Position and configure them like any Visual Effect graph asset.
+
+## Lightning
+
+Lighting is a world-space VFX, but it is integrated with the Altos cloud system. When a lightning effect is spawned, the lightning VFX also illuminates the clouds. This uses the `VFX Lightning Effect Spawner` system.
+
+Otherwise, configure the lightning like any other Visual Effect graph asset.

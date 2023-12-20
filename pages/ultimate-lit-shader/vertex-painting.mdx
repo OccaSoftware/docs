@@ -1,0 +1,49 @@
+
+import ReactPlayer from 'react-player'
+
+# Vertex Painting
+
+**Vertex painting** is a technique used in the Ultimate Lit Shader (ULS) to blend between two texture sets on a material's surface. This powerful feature allows you to create complex and dynamic materials by defining how textures are mixed based on vertex colors. In this document, we'll explore how to use vertex painting effectively with ULS.
+
+## Two Texture Sets in ULS
+
+ULS supports the use of two texture sets, enabling you to create more versatile and detailed materials. These texture sets can be utilized for various purposes, such as blending between different materials or adding surface details.
+
+<ReactPlayer playing controls url='/vid/uls-vertex-painting.mp4' autoPlay muted loop />
+
+## Vertex Color Channel Usage
+
+Vertex painting in ULS relies on the red (R) channel of the vertex color. The vertex color red channel value determines which of the two texture sets is applied to the material:
+
+- When the vertex color red channel is **1**, the shader uses the first texture set.
+- When the vertex color red channel is **0**, the shader uses the second texture set.
+
+This channel acts as a switch to control the blending between the two texture sets.
+
+## Blending Mechanism
+
+ULS blends the two texture sets based on two key factors:
+
+1. **Heightmap**: The heightmap defines the surface's elevation, allowing for smooth transitions between the two textures. This means that you can create detailed height-based transitions between materials.
+
+2. **Vertex Color**: As explained earlier, the red channel of the vertex color determines the blending ratio between the two texture sets. By painting vertices with varying red channel values, you can precisely control how the textures blend across the material's surface.
+
+## Painting Vertices in Unity
+
+To perform vertex painting in Unity, you can use tools like **Polybrush**. [Polybrush](https://www.occasoftware.com/blog/get-creative-with-polybrush-a-comprehensive-guide) is a Unity plugin that allows you to paint vertices directly in the Unity Editor. Here's a basic workflow:
+
+1. Install and import the Polybrush package into your Unity project.
+
+2. Select the GameObject with the material you want to vertex paint.
+
+3. Enter **Vertex Painting** mode using the Polybrush tool.
+
+4. Paint vertices on the model using the red channel (R) of the vertex color. Assign values of 0 or 1 to control the blending between texture sets.
+
+5. Experiment with different paintbrush settings to achieve the desired blending effect.
+
+6. Save your work, and ULS will use the painted vertex colors to determine texture set blending during rendering.
+
+## Conclusion
+
+Vertex painting is a powerful technique in the Ultimate Lit Shader (ULS) that allows you to create intricate and dynamic materials by blending between two texture sets. By understanding how to use the red channel of vertex colors and tools like Polybrush in Unity, you can unlock the full potential of ULS for creating stunning visuals in your Unity projects.

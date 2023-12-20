@@ -1,0 +1,15 @@
+# Technical Overview
+
+This article will provide an overview of the underlying functionality for LSPP. By the end of this article, you should have a high-level understanding of how LSPP works.
+
+LSPP uses screen-space information to execute a light scattering pass. This all works in real time.
+
+LSPP first generates an occlusion texture. LSPP uses the scene's depth buffer information to determine whether a particular pixel is (or is not) occluded. If there is depth information for a particular screen pixel, LSPP marks that pixel as occluded.
+
+If your object does not write to the depth buffer, LSPP will not generate god rays for it.
+
+LSPP then initializes a light scattering pass. The light scattering pass uses the information from the occlusion texture to make decisions about whether each pixel should receive god rays. The light scattering pass is executed at half resolution in order to make sure that your project has the best frame rate.
+
+We use a noise texture to dither the samples in order to reduce banding. You can animate this noise to trade off static noise for temporally dynamic noise.
+
+After the light scattering pass, we upsample the light scattering texture to full resolution. Then, we merge the full-resolution texture with the screen texture.

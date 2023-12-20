@@ -1,0 +1,39 @@
+
+import { Steps } from 'nextra/components'
+
+# Quick Start
+
+Follow the steps in this section to install Super Simple Skybox in your project. Get started quickly with the default material settings, then customize the settings and listen to callbacks to fully integrate the asset into your project.
+
+## Installation
+
+You license Super Simple Skybox by purchasing it on the Unity Asset Store, then importing it to your project like any other Unity Asset.
+
+After you install Super Simple Skybox, a new Super Simple Skybox folder appears in the Packages folder, and a new Shader (Super Simple Skybox) is made available for your materials.
+
+<Steps>
+### Make a Material
+
+To create a new Super Simple Skybox material, create a new Material in your project. Then, click on the Shader dropdown and select OccaSoftware -> Super Simple Skybox.
+
+### Apply the Material
+
+To apply the Super Simple Skybox material to your Skybox, open your Lighting Environment panel, then set the Skybox material to your new Super Simple Skybox material.
+
+### Add Sun component to main directional light
+
+Super Simple Skybox relies on custom shader parameters to set the direction of the sun, moon, and stars in the shader.
+
+Super Simple Skybox requires that you assign the Sun component to one object in your scene. Normally, you set this on your main directional light. You can find this component by navigating to any game object in your scene, clicking Add Component -> OccaSoftware -> Super Simple Skybox -> Sun.
+
+The moon and stars components are optional components that depend on your usage of the optional moon and star shader features.
+
+### Optional: Add Moon component to secondary directional light
+
+The moon component drives the rotation and position of the moon disc.
+
+### Optional: Set Stars
+
+The star component drives the rotation of the stars.
+
+</Steps>

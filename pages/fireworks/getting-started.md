@@ -1,0 +1,22 @@
+
+# Quick Start
+
+Fireworks is a simple firework visual effect package for Unity URP using Visual Effect Graph.
+
+Fireworks includes a random visual effect object spawner as well as a utility that picks a random audio effect to play from a user-provided list when the firework explodes.
+
+Fireworks includes one Visual Effect Graph asset, 4 example Fireworks made with this Graph, and 5 Sound Effects.
+
+Fireworks works in real time across all genres including casual games, FPS, third person, side-scroller, top down, and RTS.
+
+Fireworks works well with other Unity tools and assets.
+
+## Requirements
+
+Fireworks depends on the Universal Render Pipeline. If you are already using the Universal Render Pipeline, just install it and start using it. If you do not have Universal Render Pipeline available, you need to import it.
+
+Fireworks also has a dependency on Visual Effect Graph (14.0.7+).
+
+Fireworks version 2.0.0 and later is compatible with the following versions of the Unity Editor:
+
+- 2022.3 and later.

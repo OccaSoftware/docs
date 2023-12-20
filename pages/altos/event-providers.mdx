@@ -1,0 +1,53 @@
+# Event Providers
+
+Altos currently includes three event providers so that you can trigger time of day-related events.
+
+- `public event Action OnPeriodChanged{:cs}`
+- `public event Action OnDayChanged{:cs}`
+- `public event Action OnHourChanged{:cs}`
+
+Here is an example of using a script to subscribe to and trigger events from these callbacks:
+
+```csharp filename="TimeOfDayCallbacksDemo.cs"
+using UnityEngine;
+using OccaSoftware.Altos.Runtime;
+
+namespace OccaSoftware.Altos.Demo
+{
+  public class TimeOfDayCallbacksDemo : MonoBehaviour
+  {
+    AltosSkyDirector skyDirector;
+    
+    private void OnEnable()
+    {
+      skyDirector = FindObjectOfType<AltosSkyDirector>();
+      skyDirector.skyDefinition.OnDayChanged += OnDayChanged;
+      skyDirector.skyDefinition.OnHourChanged += OnHourChanged;
+      skyDirector.skyDefinition.OnPeriodChanged += OnPeriodChanged;
+    }
+
+    void OnDayChanged()
+    {
+      Debug.Log("The current day has changed.");
+    }
+
+
+    void OnHourChanged()
+    {
+      Debug.Log("The current hour has changed.");
+    }
+
+    void OnPeriodChanged()
+    {
+      Debug.Log("The current period of day has changed.");
+    }
+
+    private void OnDisable()
+    {
+      skyDirector.skyDefinition.OnDayChanged -= OnDayChanged;
+      skyDirector.skyDefinition.OnHourChanged -= OnHourChanged;
+      skyDirector.skyDefinition.OnPeriodChanged -= OnPeriodChanged;
+    }
+  }
+}
+```

@@ -1,0 +1,72 @@
+---
+sidebar_position: 1
+---
+# Introduction
+
+Get a technical overview of the Ballistics package.
+
+## Namespaces
+
+Ballistics is organized into three namespaces:
+
+```cs
+OccaSoftware.Ballistics.Runtime
+OccaSoftware.Ballistics.Editor
+OccaSoftware.Ballistics.Demo
+```
+
+`Runtime` is the primary namespace that you will interact with.
+You can reference the Demo namespace to understand usage patterns.
+You likely won’t need to interact with the Editor namespace.
+
+## Major Data Types
+
+Ballistics includes three data types. You should familiarize yourself with them.
+
+```cs
+Projectile
+Environment
+SimulationConfig
+```
+
+Each one contains some information about how the simulation should work.
+
+You can create these ahead of time as a Scriptable Object asset. You can also create or modify them during gameplay.
+
+### Projectile
+
+Projectile describes a ballistics projectile.
+These characteristics include the following:
+
+- Origin
+- Direction
+- Muzzle Velocity
+- Initial Kinetic Energy
+- Mass,
+- etc.
+
+When you instantiate a projectile, you should call Projectile.SetOriginAndDirection(Vector3 origin, Vector3 direction) to initialize these fields before passing the Projectile to the simulation.
+
+Some of these characteristics are calculated automatically (e.g., Initial Kinetic Energy), but most are expected as inputs.
+
+### Environment
+
+Environment describes a set of Environment Conditions.
+These characteristics include:
+
+- Gravity
+- Atmospheric Pressure
+- Humidity
+- Temperature
+- Air Density
+
+Some of these characteristics are calculated automatically (e.g., Air Density). OThers are expected as inputs (e.g., Humidity, Temperature)
+
+### SimulationConfig
+
+SimulationConfig describes the nature of the simulation that should be executed,
+
+These characteristics include:
+
+- Maximum Simulation Distance
+- Simulation Timestep

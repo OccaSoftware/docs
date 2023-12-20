@@ -1,0 +1,35 @@
+# Sky Director
+
+The sky director is the core of an Altos configuration.
+
+## How to add
+
+Add this component to your project with Add Component > OccaSoftware > Altos > Altos Sky Director.
+
+## Config files
+
+The sky director includes slots for your four major config files.
+
+1. [Sky](./modules/sky-definition)
+1. [Atmosphere](./modules/atmosphere-definition)
+1. [Stars](./modules/star-definition)
+1. [Clouds](./modules/cloud-definition)
+
+Config files make it easy to share common settings between different scenes.
+
+More about config files in /modules section.
+
+## Data file
+
+The sky director also includes a data file. This file contains .shader files and other resources that Altos needs to run properly.
+
+## Get the current sky director
+
+When a sky director is enabled, it sets a global static variable, `AltosSkyDirector.Instance`. Reference this variable to get the currently active sky director.
+
+```cs
+void Update()
+{
+    AltosSkyDirector skyDirector = AltosSkyDirector.Instance;
+}
+```

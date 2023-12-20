@@ -1,0 +1,107 @@
+---
+sidebar_position: 2
+---
+
+# Quick Start
+
+In this quick start, I will walk you through an example to set up script using this package.
+
+When you instantiate a bullet, the bullet's transform will follow the path of the simulated trajectory. This component will write a debug log when it hits a collider in the path.
+
+## Set up your bullet
+
+1. Create a new empty Game Object. Call it Bullet.
+1. Create a script and attach it to your Bullet. Call this script BulletManager.
+
+```cs filename="BulletManager.cs"
+using UnityEngine;
+
+private class BulletManager : MonoBehaviour
+{
+    
+}
+```
+
+## Initial Configuration
+
+1. Add a using declaration at the top of the script.
+1. Change the inheritance for BulletManager from MonoBehaviour to BallisticsProjectile.
+
+```cs filename="BulletManager.cs" /BallisticsProjectile/ /using OccaSoftware.Ballistics.Runtime/
+using UnityEngine;
+
+using OccaSoftware.Ballistics.Runtime
+
+private class BulletManager : BallisticsProjectile
+{
+    
+}
+```
+
+## Simulate the projectile
+
+In your Start method, call the Projectile.SetPositionAndDirection(Vector3 position, Vector3 direction) method, passing in the transform.position and transform.forward for the Bullet game object.
+
+From the Start method, subscribe your GetSimResults method to the onBallisticsComplete callback by writing onBallisticsComplete += GetSimResults.
+Also, make sure you start the simulation by calling `Simulate()`.
+
+```cs filename="BulletManager.cs"
+private void Start()
+{
+    Projectile.SetPositionAndDirection(transform.position, transform.forward);
+    onBallisticsComplete += GetSimResults;
+    Simulate(Projectile, Environment, SimulationConfig, onBallisticsComplete, onBallisticsUpdate);
+}
+```
+
+Create a new method, call it private void GetSimResults(BallisticsHitData ballisticsHitData).
+Clean up after yourself in your GetSimResults method by unsubscribing from the callback and discarding the game object.
+
+```cs filename="BulletManager.cs"
+private void GetSimResults(BallisticsHitData ballisticsHitData)
+{
+    if(ballisticsHitData.DidHit)
+    {
+        Debug.Log("Hit Something!");
+    }
+    onBallisticsComplete -= GetSimResults;
+    Destroy(gameObject);
+}
+```
+
+## Set your public fields
+
+You need to create Projectile, Environment, and SimulationConfig assets, and then drag and drop these assets into the corresponding fields in the Bullet inspector window.
+
+To create these assets: right click in project window, then choose:
+
+1. Create > Ballistics > Projectile
+1. Create > Ballistics > Environment
+1. Create > Ballistics > SimulationConfig
+
+## Final Component
+
+```cs filename="BulletManager.cs"
+using OccaSoftware.Ballistics.Runtime;
+using UnityEngine;
+
+private class BulletManager : BallisticsProjectile
+{
+    private void Start()
+    {
+        Projectile.SetPositionAndDirection(transform.position, transform.forward);
+        onBallisticsComplete += GetSimResults;
+        Simulate(Projectile, Environment, SimulationConfig, onBallisticsComplete, onBallisticsUpdate);
+    }
+
+    private void GetSimResults(BallisticsHitData ballisticsHitData)
+    {
+        if(ballisticsHitData.DidHit)
+        {
+            Debug.Log("Hit Something!");
+        }
+        onBallisticsComplete -= GetSimResults;
+        Destroy(gameObject);
+    }
+}
+```

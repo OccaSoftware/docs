@@ -1,0 +1,24 @@
+Atmosphere Definition
+=====================
+
+Altos includes a visibility system known as the Atmosphere Definition.
+
+Atmosphere Definition Overview
+------------------------------
+
+The Atmosphere Definition is a lightweight system integration that controls the distance one can see as determined by light and weather conditions.
+
+We render the Sky Atmosphere pass to a low-resolution custom render texture during the sky setup passes.
+
+Later, Altos executes a depth-based visibility pass that uses exponential depth fog to blend between the scene color and the sky color at that pixel.
+
+This approach enables you to achieve pixel-perfect, beautifully blended atmospheric fog.
+
+This feature does not replace volumetric fog or volumetric lighting. Instead, it simulates physical visibility attenuation as distant bounced light in the atmosphere reaches your eyes and reduces the contrast of distant objects.
+
+Properties
+----------
+
+You can change the Visibility Distance via UI or via script.
+
+Realistic values can range from less than 1km to more than 200km.

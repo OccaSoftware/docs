@@ -1,0 +1,38 @@
+# Cloud Shadows
+
+Altos includes a cloud shadow rendering system as well. You can enable it from the Cloud definition.
+![Alt text](/img/cloud-shadows.png)
+
+## Compatibility with shaders
+
+Cloud Shadows don't write to Unity's shadowmap since it doesn't support transparency, which is really important for good-looking cloud shadows.
+
+But, you can integrate cloud shadows with transparent objects! This is easiest when using custom shaders or unlit shader graphs. Lit shader graphs don't work very well since you don't have a way to override the lighting.
+
+### Where to find the implementation
+
+Go to Altos/ShaderLibrary/CloudShadows.hlsl for function implementations
+
+### Custom Shader
+
+In your includes, include the CloudShadow file:
+
+```hlsl
+# include "Packages/com.occasoftware.altos/ShaderLibrary/CloudShadows.hlsl"
+```
+
+In your shader, get the cloud shadow attenuation:
+
+```hlsl
+float cloudShadowAttenuation = GetCloudShadowAttenuation(postionWS);
+```
+
+Use the cloud shadows to attenuate your lighting, e.g.,
+
+```hlsl
+float lightAttenuation = light.shadowAttenuation * cloudShadowAttenuation
+```
+
+### Shader Graph
+
+Use the included GetCloudShadows subgraph

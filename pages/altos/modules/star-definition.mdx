@@ -1,0 +1,41 @@
+# Star Definition
+
+Altos includes a powerful and dynamic star system that gives you control over the appearance, flickering, size, and positioning of a star system that can feature tens of thousands of stars.
+
+## Overview
+
+The star system is made up of a Compute Shader that renders the Count number of quad meshes, each rotated randomly, in a sphere around the camera.
+
+## Usage
+
+If you set a Star Definition asset in your Sky Director, Altos will render stars.
+
+By default, the star system assigns a color and brightness value to each star in the sky. These values are based on a proprietary distribution model using scientific star brightness and color data.
+
+You can use these values, you can tint the Color and Brightness, or you can ignore them altogether by unchecking the Automatic Color and Automatic Brightness options.
+
+You can set any Texture as an input for the stars. The stars use an additive blend mode, so there's no need to enable transparency for the input texture.
+
+You can set the Flicker Frequency and Flicker Strength. These values are also automatically adjusted near the horizon; stars appear to flicker more often at the horizon due to atmospheric attenuation.
+
+You can set the Size. (We automatically distribute the stars in a range around the input size. This isn't configurable.)
+
+From a positioning standpoint, the basic concept is that you are on the equator and true north is aligned with +Z axis. As a result, the stars rotate around the +Z axis. You can adjust the Inclination to tilt the stars, which adjusts the axis around which the stars will rotate.
+
+The stars automatically make one full rotation each 24hr period. You can lock the stars in place by checking the Position Static checkbox.
+
+## Properties
+
+| Property              | Usage                                                                                                                                                   |
+|---------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Count                 | Number of stars to render                                                                                                                               |
+| Automatic Color       | When enabled, Altos will automatically assign a color to each star. These colors are based on scientific measurements of visible stars.                 |
+| Automatic Brightness  | When enabled, Altos will automatically assign a brightness to each star. These intensity values are based on scientific measurements of visible stars.  |
+| Texture               | The texture to use for the stars.                                                                                                                       |
+| Color                 | The color to use for the stars.                                                                                                                         |
+| Day Brightness        | The brightness of the stars during the day (6am - 6pm).                                                                                                 |
+| Flicker Frequency     | The number of times the stars will flicker per second.                                                                                                  |
+| Flicker Strength      | The intensity of the star flickering effect.                                                                                                            |
+| Size                  | The average size of each star.                                                                                                                          |
+| Position Static       | When enabled, the star sphere will not automatically rotate with time of day.                                                                           |
+| Inclination           | Tilts the star sphere.                                                                                                                                  |

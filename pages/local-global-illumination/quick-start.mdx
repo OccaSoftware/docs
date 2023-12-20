@@ -1,0 +1,61 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# Quick Start
+
+Follow the steps in this section to install Local Global Illumination (or LGI) in your project. Get started quickly with the default settings, then configure Local Global Illumination to help it fit your project's performance budget and visual requirements.
+
+## Installation
+
+Local Global Illumination is a paid package, available on the Unity Asset Store. You install Local Global Illumination by licensing it on the Unity Asset Store, then importing it to your project like any other Unity Asset.
+
+After you install Local Global Illumination, a new folder will appear in your Assets directory: Assets/OccaSoftware/Local GI. A new component is available in your Add Component Menu: Local GI Handler. And, a new Renderer Feature is available for your Renderer: Local GI Renderer Feature.
+
+## First Setup
+
+1. Open your Universal Renderer Data in the Inspector window.
+2. Click "Add Renderer Feature" -> "Local GI Renderer Feature".
+3. Create a new Game Object in your Hierarchy.
+4. Open that Game Object in the Inspector window.
+5. Click Add Component, then search for "Local GI Handler", and add "Local GI Handler" to the Game Object.
+6. The Local GI Handler will automatically add a Camera and Universal Additional Camera Data components to the object.
+
+The Local Global Illumination system is now installed in your project and running.
+
+## Usage with Forward
+
+Local Global Illumination is designed to work out-of-the-box with the Deferred rendering path.
+
+If you are using the Forward rendering path, you need to change the render path setting in your Renderer Feature. To do this, follow these steps:
+
+1. Open your Universal Renderer Data
+2. Identify your Local GI Renderer Feature
+3. Open the Settings menu
+4. Select the dropdown
+5. Select Forward
+
+## Initial Configuration
+
+All of the options that you need to configure this asset are contained in the Local GI Handler.
+
+From the Local GI Handler, you can configure the following properties:
+
+### Maximum Sample Distance
+
+This option controls the far clip plane of the internal camera that Local Global Illumination uses to evaluate the local scene.
+
+### Maximum Influence Distance
+
+This option controls the maximum sampling range for the LGI irradiance map. Objects that are farther than this distance will not receive any illumination from LGI.
+
+### Exposure
+
+This option controls the brightness of the irradiance map.
+
+### Culling Mask
+
+This option controls which layers are included in the irradiance map. You can exclude certain layers if you want to optimize performance, exclude high-frequency meshes, or exclude complex geometry.
+
+### Clear Flags
+
+This option controls whether the irradiance map includes the Skybox or not. When set to Black, the Irradiance map excludes the skybox, so LGI lighting does not include the skylight. When set to Skybox, the Irradiance map does include the skybox, so LGI lighting responds to dynamic changes in the skybox.

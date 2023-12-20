@@ -1,0 +1,53 @@
+
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+
+# Standalone Volumetric Clouds
+
+## Overview
+You can use Altos clouds with other skyboxes.
+
+<Callout>
+Many of the cloud properties are set automatically by the sky module included with Altos. If you use Altos' volumetric clouds without these automatic cloud properties, your clouds will look less realistic.
+</Callout>
+
+## Setup Steps
+
+<Steps>
+### Step 1
+
+Confirm that your Sky Director is set up correctly.
+
+![](/img/altos/standalone-clouds/1.jpg)
+
+### Step 2
+
+Disable the Sun, Moon, and any other Sky Object children you have of the Sky Director.
+
+![](/img/altos/standalone-clouds/2.jpg)
+
+### Step 3
+
+Add a new Directional Light that will act as your main sun light.
+
+![](/img/altos/standalone-clouds/3.jpg)
+
+### Step 4
+
+Add the SetMainLightShaderProperties component to the new Directional Light in your scene.
+
+![](/img/altos/standalone-clouds/4.jpg)
+
+### Step 5
+
+Remove the Sky, Atmosphere, and Star Definitions from the Altos Sky Director. These components are incompatible with custom skybox rendering.
+
+![](/img/altos/standalone-clouds/5.jpg)
+
+### Step 6
+
+Go to your Lighting tab, then add the Skybox Material you want to use. In this example, we use Unity's default procedural skybox material.
+
+![](/img/altos/standalone-clouds/6.jpg)
+</Steps>

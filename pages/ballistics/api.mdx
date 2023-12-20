@@ -1,0 +1,97 @@
+
+# API
+
+## BallisticsProjectile - Protected Methods
+
+```cs
+protected void Simulate();
+```
+
+Automatically uses the projectile, environment, and simulation config along with the callbacks included in the BallisticsProjectile class.
+
+```cs
+protected void Simulate(
+    Projectile projectile, 
+    Environment environment, 
+    SimulationConfig simulationConfig, 
+    System.Action<BallisticsHitData> onBallisticsComplete, 
+    System.Action<Kinematics> onBallisticsUpdate
+    );
+```
+
+Allows you to pass custom data for the Projectile, Environment, SimulationConfig, and callbacks data.
+
+## BallisticsProjectile - Public Fields
+
+```cs
+public Projectile Projectile;
+public Environment Environment;
+public SimulationConfig SimulationConfig;
+```
+
+These automatically return the contents of the corresponding ScriptableObject provided via the inspector.
+
+## BallisticsProjectile - Protected Fields
+
+```cs
+protected System.Action<BallisticsHitData> onBallisticsComplete;
+protected System.Action<Kinematics> onBallisticsUpdate;
+protected ProjectileSO projectileSO;
+protected EnvironmentSO environmentSO;
+protected SimulationConfigSO simulationStateSO;
+```
+
+## BallisticsCore - Public Methods
+
+### Predict
+
+#### Declaration
+
+```cs
+public static BallisticsPrediction Predict(
+    Projectile projectile, 
+    Environment environment, 
+    SimulationConfig simulationConfig
+    );
+```
+
+#### Usage
+
+```cs
+public Projectile projectile;
+public Environment environment;
+Public SimulationConfig simulationConfig;
+
+public void Update()
+{
+    BallisticsPrediction.Predict(projectile, environment, simulationConfig);
+}
+```
+
+## BallisticsPrediction - Class Definition
+
+```cs
+public BallisticsHitData BallisticsHitData;
+public List<Kinematics> Kinematics;
+```
+
+## BallisticsHitData - Class Definition
+
+Provides more information about the final state of the simulated projectile.
+
+```cs
+public bool DidHit;
+public RaycastHit HitInfo;
+public Projectile Projectile;
+public Details Details;
+```
+
+## Details - Class Definition
+
+Offers even more information about the hit event
+
+```cs
+public float TimeInFlight;
+public float SpeedAtImpact;
+public float KineticEnergyAtImpact;
+```

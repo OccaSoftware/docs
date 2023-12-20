@@ -1,0 +1,33 @@
+# Quick Start
+
+Follow the steps in this section to install Auto Exposure in your project. Get started quickly with the progressive importance mask.
+
+## Installing Auto Exposure
+
+Auto Exposure is a paid package on the Unity Asset Store. You install Auto Exposure by licensing it on the Unity Asset Store, then importing it to your project like any other Unity Asset.
+
+After you install Auto Exposure, a new *Auto Exposure*folder appears in the Packages, and a new Renderer Feature is available to your Universal Renderer Data.
+
+Add the Auto Exposure Renderer Feature to your Universal Renderer so that your scriptable renderer has access to the Auto Exposure passes.
+
+![](/img/auto-exposure/install.gif)
+
+‍
+
+## Enabling Auto Exposure
+
+Auto Exposure is designed to work with Unity URP's Volume Framework. You are expected to have some familiarity with using this framework.
+
+In order to enable Auto Exposure, you need to create a new volume, then add Auto Exposure as an override to that volume.
+
+The Auto Exposure override is disabled by default. To enable it, set the mode to On.
+
+![](/img/auto-exposure/enable.gif)
+
+Auto Exposure is now working in your project.
+
+## Configuring Auto Exposure
+
+You can customize the settings for your Auto Exposure directly from the override.
+
+If you have more than one local volume in your scene, Unity will automatically interpolate between the Auto Exposure settings for the local volumes.

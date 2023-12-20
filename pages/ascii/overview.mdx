@@ -1,0 +1,34 @@
+Ascii Overview
+==============
+
+Using Ascii requires you to understand the underlying rendering system and the various options that you have to control how Ascii renders. Get up and running quickly to create and tune your Ascii renderer.
+
+Underlying Concept
+------------------
+
+Ascii downscales and quantizes your screen texture to split your screen into a small number of segmented chunks of color. Ascii uses the luminance information from each of these color chunks to offset through a font asset texture. Ascii sets up a corresponding UV for each chunk, then samples the included font asset within that UV segment to render the font to screen during the post-processing pass. Ascii is fast because it uses this texture-based approach rather than rasterizing fonts from a .ttf or .otf format file.
+
+You have precise control over the exact font characters that are eligible for Ascii to use when rendering because Ascii only uses the characters included in the font texture that you supply.
+
+There are several examples of valid font textures included in the package.
+
+When Ascii quantizes the screen down into these segmented chunks, it also has the opportunity to retain the chunked colors through to the final render. In this way, Ascii works both as a and as an Ascii renderer.
+
+Basic Usage
+-----------
+
+When you use Ascii without supply any font, the system works as a pixelization effect. The Backing Color tints the pixelized results of the frame buffer. The Backing Color Strength affects the intensity of this tint.
+
+![](/img/ascii/overview/ascii-pixelization.jpg)
+
+When you supply the font, you can still take advantage of the pixelated render to add visual interest to your scene. By default, Ascii uses the underlying color chunk as the color of the rendered text.
+
+In the following example, we set the Backing Color to black, then increased the strength of the backing color to 1. This fully hides the pixelized image data.
+
+We left the Font Color Strength at 0. When the Font Color Strength is 0, Ascii will use the underlying color chunk as the color of the rendered text.
+
+![](/img/ascii/overview/ascii-text-only.jpg)
+
+In comparison, you can set the Font Color to Green and the Font Color Strength to 1. This will override the underlying color chunk data, replacing it with the input font color.
+
+![](/img/ascii/overview/ascii-text-only-font-color-strength.jpg)

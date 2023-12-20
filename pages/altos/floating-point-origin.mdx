@@ -1,0 +1,17 @@
+# Floating Point Origin Offset
+
+Altos supports Floating Point Origin Offsets.
+
+The Demo includes an example of how to use this integration.
+
+## Usage
+
+1. Get a reference to the active sky director.
+1. Call the public SetOrigin method and pass in your offset.
+
+```cs
+void Update()
+{
+    FindObjectOfType<AltosSkyDirector>().SetOrigin(offset);
+}
+```

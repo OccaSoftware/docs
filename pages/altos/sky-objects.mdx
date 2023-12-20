@@ -1,0 +1,58 @@
+# Sky Objects
+
+You can render objects in your skybox using the sky object system.
+
+## Add
+
+To create a sky object:
+
+1. Make a new game object
+1. Add Component > OccaSoftware > Altos > Sky Object
+
+## Usage
+
+You can preview the orbit of your sky object in your sky director gizmo.
+
+## Properties
+
+| Property                               | Description                                                                                                                                    |
+|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Type                                   | If set to sun, this object will be used for cloud shadows and lighting                                                                         |
+| Angular Diameter Degrees               | The angular diameter of the sky object in degrees                                                                                              |
+| Texture                                | Texture to apply to the sky object                                                                                                             |
+| Object color                           | Tint for the sky object                                                                                                                        |
+
+### Lighting
+
+| Property                               | Description                                                                                                                                    |
+|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Automatic Color                        | When enabled, the sky object's directional light color is set automatically                                                                    |
+| Automatic Color Curve Adjustment       | Adjusts how the automatic color is set                                                                                                         |
+| Automatic Color Curve Base Temperature | Minimum color temperature in Kelvins                                                                                                           |
+| Automatic Color Curve Max Temperature  | Maximum color temperature in Kelvins                                                                                                           |
+| Automatic Brightness                   | When enabled, the sky object's directional light brightness is set automatically                                                               |
+| Automatic Intensity Curve Adjustment   | Adjusts how the brightness is set                                                                                                              |
+| Peak Intensity                         | Maximum light intensity                                                                                                                        |
+| Lighting Color Mask                    | Tints the light color                                                                                                                          |
+
+### Positioning
+
+| Property                               | Description                                                                                                                                    |
+|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sort Order                             | Objects with a higher sort order render behind objects with a lower sort order                                                                 |
+| Orbit Offset                           | When an object has an orbit offset of 0, it will be at the peak of its orbit at 12:00. Use this value to offset the orbit.                     |
+| Inclination Offset                     | When an object has an inclination offset of 0, it will peak directly overhead. Use this value to shift the orbit away from the center.         |
+| Orientation Offset                     | When an object has an orientation offset of 0, it will rise in the east and set in the west. Use this value to shift the orientation of orbit. |
+| Position is static                     | When enabled, the object will ignore time of day changes.                                                                                      |
+
+### Sky Influence
+
+| Property                               | Description                                                                                                                                    |
+|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Falloff                                | Affects intensity of sky lighting on skybox                                                                                                    |
+
+### Editor Properties
+
+| Property                               | Description                                                                                                                                    |
+|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Handle Color                           | Changes the color of the handle in the Sky director gizmo                                                                                      |

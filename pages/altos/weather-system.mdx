@@ -1,0 +1,26 @@
+# Weather System
+
+Altos enables you to set precipitation and weather states using Weather Manager components.
+
+To preview the weather map, click Window > OccaSoftware > Altos > Cloudmap Preview
+
+## Add a Weather State
+
+1. Create a new Game Object
+1. Click Add Component > OccaSoftware > Altos > Weather Manager
+
+## Configure the Weather State
+
+1. Position the Weather State on the XZ plane where you want to originate the weather state from.
+1. Set the Precipitation Intensity. 1 = Rain. 0 = No Rain.
+1. Set the Radius of the Weather State.
+
+## Integrate VFX
+
+Altos VFX are automatically integrated with the weather system using the `WeatherEffect` class.
+
+You can use the WeatherEffect component or roll your own.
+
+### Using the WeatherEffect Component (Recommended)
+
+To integrate your own VFX with the weather system, add a `altos_PrecipitationAmount` property to your Visual Effect asset, then use the `WeatherEffect` component to set it.

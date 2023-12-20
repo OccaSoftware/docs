@@ -1,0 +1,75 @@
+# Simulation vs. Prediction
+
+## Prediction
+
+Runtime contains one public static method you may want to interact with:
+
+```cs
+public BallisticsPrediction BallisticsCore.Predict(
+    Projectile projectile, 
+    Environment environment, 
+    SimulationConfig simulationConfig
+    );
+```
+
+When called, this method will execute an instantaneous simulation of the projectile. Then, it returns back a BallisticsPrediction.
+The BallisticsPrediction will return null if the Prediction was unable to run.
+
+If the BallisticsPrediction is not null, you can interact with it to get more information.
+
+### Check whether a collision would occur
+
+Check the `BallisticsPrediction.BallisticsHitData.DidHit{:cs}` boolean. If true, then the prediction identified a hit.
+
+### Get more info about a predicted collision
+
+Check the `BallisticsPrediction.HitInfo{:cs}` struct. It contains further information about the hit details.
+
+### When should I call Predict?
+
+The BallisticsCore.Predict method should generally be called by the artillery piece itself rather than the projectile.
+
+You should use Predict to estimate approximate point of impact or to draw trajectories before actually shooting.
+
+Note that the prediction is calculated using the physics simulation in place at the time of the prediction. However, the bullet would take real time to travel. The global physics simulation is not interpolated forward in any way. As a result, objects that are in motion that may end up in the path of the projectile during real-time travel will not be simulated.
+
+What does this mean? In short, you cannot use the BallisticsCore.Predict method to determine whether a moving enemy would be hit along this trajectory in the future.
+
+## Simulation
+
+You will also want to set particular Game Objects as BallisticsProjectiles. You will use class inheritance for this. On your bullet prefab, open your primary handling script. Change the inheritance from `MonoBehaviour{:cs}` to `BallisticsProjectile{:cs}`.
+
+### Declaration
+
+The BallisticsProjectile base class includes the `Simulate(){:cs}` method, which is the realtime version of the BallisticsCore.Predict() method mentioned above. You want to iniherit from BallisticsProjectile and call the `Simulate(){:cs}` method for projectiles that should have join the realtime ballistics simulation.
+
+```cs
+protected IEnumerator Simulate();
+```
+
+### Usage
+
+Simulate uses fields in the BallisticsProjectile class to execute the simulation. Explore the BallisticsProjectile base class to understand these fields in more detail. At a high level, these are:
+
+```cs
+protected System.Action<BallisticsHitData> onBallisticsComplete;
+protected System.Action<Kinematics> onBallisticsUpdate;
+protected ProjectileSO projectileSO;
+protected EnvironmentSO environmentSO;
+protected SimulationConfigSO simulationStateSO;
+public Projectile Projectile;
+public Environment Environment;
+public SimulationConfig SimulationConfig;
+```
+
+Generally, the Projectile, Environment, and SimulationConfig will be automatically set based on the Scriptable Objects set in the inspector for the projectileSO, environmentSO, and simulationSO fields. However, you can manually override these values with runtime ones by simply setting them.
+
+Simulate runs as a Coroutine.
+
+### Callbacks
+
+Data from this coroutine can be passed back via callbacks to methods using the onBallisticsUpdate and onBallisticsComplete actions.
+
+`onBallisticsUpdate{:cs}` will trigger a callback every execution of the coroutine except for the final one.
+
+`onBallisticsComplete{:cs}` will trigger a callback on the final frame of execution of the coroutine.
