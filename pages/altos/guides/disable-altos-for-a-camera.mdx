@@ -1,5 +1,4 @@
-Disable Altos for a Specific Camera
-============================
+# Disable Altos for a Specific Camera
 
 ## Overview
 
@@ -7,8 +6,7 @@ Altos may conflict with other assets that create and use cameras.
 The best way to resolve this is to assign those cameras to a different Renderer that uses a slimmed-down set of Renderer Features.
 If that is not possible, you can disable Altos on a specific camera using the included DiableAltosRendering.cs component.
 
-Setup Steps
------------
+## Setup Steps
 
 ### Step 1
 
@@ -18,7 +16,7 @@ Identify the camera that is causing the issues. Third-party assets may generate 
 
 Add the DisableAltosRendering.cs component to that camera. If a third-party asset generates and manages the camera by script, modify the script.
 
-```
+```cs
 using OccaSoftware.Altos.Runtime
 
 // ...
@@ -38,7 +36,3 @@ Confirm that you have added the component to the camera.
 ### Step 4
 
 Confirm that the rendering issue is gone.
-
-## Still having issues?
-
-If you still have an issue, open a ticket on Discord: <https://www.occasoftware.com/discord>.
