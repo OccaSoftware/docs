@@ -16,9 +16,7 @@ Buto has a default limit of 8 additional lights.
 
 To increase this limit, you need to edit a few of the files included with Buto.
 
-:::caution
 Increasing the maximum light limit could cause increased performance requirements, so we recommend raising it to match your required number of lights. Do not set it to an arbitrarily high number.
-:::
 
 ### Updating the CPU-side Maximum Light Count
 1. Open ~/Runtime/ButoCommon.cs.
@@ -26,7 +24,7 @@ Increasing the maximum light limit could cause increased performance requirement
 3. Set the new maximum light count to the value you want.
 
 ### Updating the GPU-side Maximum Light Count
-1. Open ~/Shaders/Resources/Fog.hlsl
+1. Open ~/Shaders/Resources/LightingSampler.compute
 2. Look for the line `#define MAX_LIGHT_COUNT 8`. Update the number to the same value as the value you've set in ButoCommon.cs
 3. Save both files and validate that the increased light count is working.
 
