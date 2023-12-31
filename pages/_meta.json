@@ -1,5 +1,6 @@
 {
   "index": "Introduction",
+  "install": "Install",
   "-- Rendering": {
     "type": "separator",
     "title": "Rendering"

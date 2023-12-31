@@ -1,0 +1,44 @@
+# Install a package
+
+This guide will walk you through the basics of installing an OccaSoftware package using Unity.
+
+## Get Started
+
+You will use the Unity Package Manager to load OccaSoftware packages from our Git repositories, which are hosted on Github.
+
+In this example, we will install Ninja - a lightweight performance profiler.
+
+## Install Git and Git LFS
+
+- Install the [Git client](https://git-scm.com/) (minimum version 2.14.0).
+- Install the [Git LFS](https://git-lfs.com/) client.
+
+## Install the Package
+
+1. Open the Package Manager (Window > Package Manager)
+2. Open the Add menu in the Package Manager's toolbar.
+3. Select Add package from git URL from the add menu. A text box and an Add button appear.
+4. Enter the Git URL (`https://github.com/OccaSoftware/ninja.git`) and click Add.
+
+If Unity was able to install the package successfully, the package now appears in the package list with the label.
+
+## Specify a package version
+
+To declare a specific package version that you want the Package Manager to clone, add the revision prefixed by the number sign (#) at the end of the URL:
+
+```json
+{
+  "dependencies": {
+    "com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git#1.1.0",
+  }
+}
+```
+
+## Troubleshoot
+
+ If Unity wasn’t able to install the package, the Unity Console will display an error message.
+
+- No ‘git’ executable was found
+- git-lfs: command not found
+- Repository not found
+- Could not read Username: terminal prompts disabled
