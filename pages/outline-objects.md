@@ -1,5 +1,4 @@
-Outline Objects
-=====================
+# Outline Objects
 
 Outline Objects is a per-object outline shader for Unity URP.
 
@@ -15,16 +14,14 @@ Outline Objects works in real time across all genres including casual games, FP
 
 Outline Objects was designed using a custom, hand-written shader. This maximizes the performance of the asset so that your game can run as smoothly as possible.
 
-Package Style
--------------
+## Package Style
 
 Super Simple Skybox is an asset. When you import it, it will import to the Assets/Outline Objects/ directory.
 
-Requirements
-------------
+## Requirements
 
 Outline Objects depends on the Universal Render Pipeline package. It is not compatible with the Built-In Render Pipeline or the High Definition Render Pipeline.
 
 Outline Objects is compatible with the following versions of the Unity Editor:
 
--   2021.3 and later.
+- 2021.3 and later.

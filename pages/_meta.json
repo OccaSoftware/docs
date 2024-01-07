@@ -1,6 +1,6 @@
 {
   "index": "Introduction",
-  "install": "Install",
+  "quick-start": "Quick Start",
   "-- Rendering": {
     "type": "separator",
     "title": "Rendering"
