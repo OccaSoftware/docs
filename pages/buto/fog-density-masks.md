@@ -4,9 +4,8 @@
 ## Understanding Fog Density Masks
 Buto enables you to use a box or a spherical density mask to modify the fog density in a given region. 
 
-:::info 
+**💡 Info:**
 Buto will render up to 8 fog density masks at one time. If you have more than 8 density masks in your scene, Buto will render the nearest 8 based on the distance to the camera.
-:::
 
 ## Creating a Fog Density Mask
 1. Right click in your Hierarchy > Rendering > Buto Fog Density Mask
@@ -25,6 +24,5 @@ Buto will render up to 8 fog density masks at one time. If you have more than 8 
 1. Create a new Fog Density Mask
 1. Set the Mode to Exclusive
 
-:::info
+**💡 Info:**
 When there is more than one Exclusive Fog Density Mask active in the scene at the same time, Buto will render fog that is within the range of either mask.
-:::
