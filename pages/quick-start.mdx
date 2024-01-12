@@ -14,7 +14,7 @@ OccaSoftware publishes both Assets and Packages. Unity projects are split in two
 - Import Assets to your /Assets/ folder.
 - Import Packages to your /Packages/ folder.
 
-## Get Started with Assets
+## Import an Asset
 
 This section details how to download and import an Asset from OccaSoftware.
 
@@ -23,7 +23,7 @@ This section details how to download and import an Asset from OccaSoftware.
 3. Extract the zip file.
 4. Import the folder to your /Assets/ directory.
 
-## Get Started with Packages
+## Import a Package
 
 This section details how to download and import a Package from OccaSoftware.
 
@@ -48,19 +48,53 @@ In this example, you will install Ninja. Ninja is a lightweight performance prof
 
 If Unity was able to install the package successfully, the package now appears in the package list with the label.
 
+## Additional Package Features
+
+Packages offer additional features beyond Assets. For example, you can specify Package versions in your [Project Manifest](https://docs.unity3d.com/Manual/upm-manifestPrj.html).
+
+### Understand the Project Manifest
+
+Unity uses the Project Manifest to list and load Project Dependencies. A Package is a Project Dependency. If you add a Package to the Project Manifest, Unity will import that Package to your Project for you.
+
+The Project Manifest stores the list of Project Dependencies as key-value pairs in a json file.
+
+```json
+{
+  "dependencies": {
+    "{PACKAGE_NAME}": "{PACKAGE_URL}",
+    "{PACKAGE_NAME}": "{PACKAGE_URL}"
+  }
+}
+```
+
+### Use the Project Manifest
+
+To add a Package to the Project Manifest, you need to do the following steps:
+
+1. Navigate to your {Project Name}/Packages folder in your file browser.
+2. Open the manifest json file.
+3. Add the Package name and URL as a key-value pair in the manifest dependencies.
+
+For example, you want to add Ninja to your Project Manifest. The Package Name and URL for Ninja are as follows:
+
+- Package Name: `com.occasoftware.ninja`
+- Package URL: https://github.com/OccaSoftware/ninja.git
+
+To add Ninja, you update your Project Manifest with the key-value pair in the dependencies list.
+
+```json
+"com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git"
+```
+
 ### Specify a package version
 
 To declare a specific package version that you want the Package Manager to clone, add the revision prefixed by the number sign (#) at the end of the URL:
 
 ```json
-{
-  "dependencies": {
-    "com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git#1.1.0",
-  }
-}
+"com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git#1.1.0"
 ```
 
-### Troubleshoot
+## Troubleshoot
 
  If Unity wasn’t able to install the package, the Unity Console will display an error message.
 
@@ -68,3 +102,5 @@ To declare a specific package version that you want the Package Manager to clone
 - git-lfs: command not found
 - Repository not found
 - Could not read Username: terminal prompts disabled
+
+For directions on how to resolve Package import issues, review [Unity's documentation on UPM Errors](https://docs.unity3d.com/Manual/upm-errors.html).
