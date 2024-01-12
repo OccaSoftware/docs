@@ -11,8 +11,8 @@ Assets are typically images, models, or audio files; Packages are typically code
 
 OccaSoftware publishes both Assets and Packages. Unity projects are split in two folders: Assets and Packages. You must import Assets and Packages to the corresponding folder in your Unity project.
 
-- Import Assets to your /Assets/ folder.
-- Import Packages to your /Packages/ folder.
+- Import Assets to your Assets folder.
+- Import Packages to your Packages folder.
 
 ## Import an Asset
 
@@ -21,7 +21,7 @@ This section details how to download and import an Asset from OccaSoftware.
 1. Identify the Asset you want in the Dashboard.
 2. Click the Download button.
 3. Extract the zip file.
-4. Import the folder to your /Assets/ directory.
+4. Import the extracted contents to your Assets folder.
 
 ## Import a Package
 
@@ -41,12 +41,15 @@ In this example, you will install Ninja. Ninja is a lightweight performance prof
 
 ### 2. Install the Package
 
-1. Open the Package Manager (Window > Package Manager)
-2. Open the Add menu in the Package Manager's toolbar.
-3. Select Add package from git URL from the add menu. A text box and an Add button appear.
-4. Enter the Git URL (`https://github.com/OccaSoftware/ninja.git`) and click Add.
+1. In the **Window** menu, select **Package Manager**.
+2. In the toolbar, click **+**.
+3. In the dropdown menu, select **Add package from git URL**.
+4. Enter the Git URL. In this case, type https://github.com/OccaSoftware/ninja.git.
+5. Click **Add**.
 
-If Unity was able to install the package successfully, the package now appears in the package list with the label.
+Unity will import the Package and execute a Domain Reload. Once Unity finishes, you will see the new Package, Ninja, in your Packages folder.
+
+Unity may encounter an issue when importing the Package. If a problem occurs, try to [Troubleshoot your issue](#troubleshoot).
 
 ## Additional Package Features
 
@@ -94,7 +97,7 @@ To declare a specific package version that you want the Package Manager to clone
 "com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git#1.1.0"
 ```
 
-## Troubleshoot
+## [Troubleshoot](#troubleshoot)
 
  If Unity wasn’t able to install the package, the Unity Console will display an error message.
 
