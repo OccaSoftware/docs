@@ -44,7 +44,7 @@ In this example, you will install Ninja. Ninja is a lightweight performance prof
 1. In the **Window** menu, select **Package Manager**.
 2. In the toolbar, click **+**.
 3. In the dropdown menu, select **Add package from git URL**.
-4. Enter the Git URL. In this case, type https://github.com/OccaSoftware/ninja.git.
+4. Enter the Git URL. In this case, type `https://github.com/OccaSoftware/ninja.git`.
 5. Click **Add**.
 
 Unity will import the Package and execute a Domain Reload. Once Unity finishes, you will see the new Package, Ninja, in your Packages folder.
@@ -74,14 +74,14 @@ The Project Manifest stores the list of Project Dependencies as key-value pairs 
 
 To add a Package to the Project Manifest, you need to do the following steps:
 
-1. Navigate to your {Project Name}/Packages folder in your file browser.
+1. Navigate to your Packages folder in your file browser.
 2. Open the manifest json file.
 3. Add the Package name and URL as a key-value pair in the manifest dependencies.
 
 For example, you want to add Ninja to your Project Manifest. The Package Name and URL for Ninja are as follows:
 
 - Package Name: `com.occasoftware.ninja`
-- Package URL: https://github.com/OccaSoftware/ninja.git
+- Package URL: `https://github.com/OccaSoftware/ninja.git`
 
 To add Ninja, you update your Project Manifest with the key-value pair in the dependencies list.
 
@@ -97,7 +97,7 @@ To declare a specific package version that you want the Package Manager to clone
 "com.occasoftware.ninja": "https://github.com/OccaSoftware/ninja.git#1.1.0"
 ```
 
-## [Troubleshoot](#troubleshoot)
+## Troubleshoot
 
  If Unity wasn’t able to install the package, the Unity Console will display an error message.
 
