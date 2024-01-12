@@ -1,6 +1,7 @@
 {
   "index": "Introduction",
   "quick-start": "Quick Start",
+  "compatibility": "Compatibility",
   "-- Rendering": {
     "type": "separator",
     "title": "Rendering"
