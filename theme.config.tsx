@@ -1,7 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
-import ReactGA from "react-ga4";
 
 
 const config: DocsThemeConfig = {
@@ -30,7 +29,6 @@ const config: DocsThemeConfig = {
     const url =
       'https://docs.occasoftware.com' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
-    ReactGA.initialize("G-N582JMJFFB");
 
     return (
       <>
@@ -41,7 +39,6 @@ const config: DocsThemeConfig = {
           content={frontMatter.description || 'Everything you need to build your game'}
         />
         <link rel="icon" href="img/favicon.ico" type="image/ico" />
-
       </>
     )
   },
