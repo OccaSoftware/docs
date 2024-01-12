@@ -1,32 +1,45 @@
 # Quick Start
 
-This guide will walk you through the basics of installing an OccaSoftware package using Unity.
+This guide will describe how to install an OccaSoftware product in Unity.
 
-OccaSoftware serves two types of assets: 'asset' packages and 'package' packages.
+Unity supports two types of resources:
 
-- You must import 'assets' to your /Assets/ folder.
-- You must import 'packages' to your /Packages/ folder.
+- [Assets](https://docs.unity3d.com/Manual/AssetWorkflow.html)
+- [Packages](https://docs.unity3d.com/Manual/PackagesList.html)
+
+Assets are typically images, models, or audio files; Packages are typically code plug-ins.
+
+OccaSoftware publishes both Assets and Packages. Unity projects are split in two folders: Assets and Packages. You must import Assets and Packages to the corresponding folder in your Unity project.
+
+- Import Assets to your /Assets/ folder.
+- Import Packages to your /Packages/ folder.
 
 ## Get Started with Assets
 
-You will use your file browser to load OccaSoftware assets from a .zip file which you can download from the dashboard.
+This section details how to download and import an Asset from OccaSoftware.
 
-1. Download the asset .zip file from the dashboard
-2. Extract the .zip contents
-3. Drag the folder into your /Assets/ directory
+1. Identify the Asset you want in the Dashboard.
+2. Click the Download button.
+3. Extract the zip file.
+4. Import the folder to your /Assets/ directory.
 
 ## Get Started with Packages
 
-You will use the Unity Package Manager to load OccaSoftware packages from our Git repositories, which are hosted on Github.
+This section details how to download and import a Package from OccaSoftware.
 
-In this example, we will install Ninja - a lightweight performance profiler.
+You will use the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) to load OccaSoftware packages from our Git repositories. (We host our Git repositories on [Github](https://github.com/occasoftware).)
 
-### Install Git and Git LFS
+In this example, you will install Ninja. Ninja is a lightweight performance profiling widget. As an overview, you will need to take the following steps:
+
+1. Install Git and Git LFS.
+2. Install the Package.
+
+### 1. Install Git and Git LFS
 
 - Install the [Git client](https://git-scm.com/) (minimum version 2.14.0).
 - Install the [Git LFS](https://git-lfs.com/) client.
 
-### Install the Package
+### 2. Install the Package
 
 1. Open the Package Manager (Window > Package Manager)
 2. Open the Add menu in the Package Manager's toolbar.
