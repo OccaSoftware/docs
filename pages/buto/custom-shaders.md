@@ -2,6 +2,7 @@
 # Using Buto with Custom Shaders
 
 ## Overview
+
 Buto automatically works with any shader that writes to the depth buffer.
 
 Some shaders don't write to the depth buffer (e.g., Transparent objects). You need to take some additional steps in order to make these shaders use Buto fog.
