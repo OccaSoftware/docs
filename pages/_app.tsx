@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { initGA, logPageView } from "../utils/analytics";
 
+import App, { AppContext } from 'next/app'
+
+import type { AppProps } from 'next/app'
+
 const MyApp = ({ Component, pageProps }) => {
     const router = useRouter();
 
@@ -26,5 +30,7 @@ const MyApp = ({ Component, pageProps }) => {
 
     return <Component {...pageProps} />;
 };
+
+
 
 export default MyApp;
