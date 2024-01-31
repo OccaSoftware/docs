@@ -1,11 +1,9 @@
 
 # Buto
 
-We updated this documentation for Buto 2022, designed for Unity 2022.3 LTS.
+We updated this documentation for Buto 2022.
 
-import DocCardList from '@theme/DocCardList';
-
-<DocCardList />
+Buto 2022 is designed for Unity 2022.3 LTS.
 
 ## What is Buto?
 

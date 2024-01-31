@@ -4,37 +4,50 @@ This article will describe how to get started with our Altos package for Unity U
 
 ## Install Altos
 
-To install Altos, you first need to license it from the Unity Asset Store. After you license the asset, you import it to your project. You import it using the Unity Package Manager.
+1. Download [Altos](https://occasoftware.com/assets/altos).
+2. Import to Unity.
 
-When you import Altos to your project, you will see a new directory in your Packages folder. Look for ~/Packages/Altos/~.
+When you import Altos to your project, you will see a new directory in your **Packages** folder: `/Packages/Altos/`.
 
-## Add the Altos Renderer Feature
+## Quick Start
 
-You must add the Altos renderer feature to your scriptable render pipeline. Here's how:
+1. Add Altos Render Feature
+2. Create Sky Director
+3. Add WeatherMap
 
-1. Click on your Universal Renderer Data
-1. Click Add Renderer Feature
-1. Choose Altos
+## Add the Altos Render Feature
 
-For more help, read [Unity's help article](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@13.0/manual/urp-renderer-feature-how-to-add.html).
+You must add the Altos Render Feature to your Scriptable Render Pipeline. Here's how:
+
+1. Click on your **Universal Renderer Data** in your **Project** window.
+1. Click **Add Renderer Feature**.
+1. Choose **Altos**.
 
 You do not need to configure the Renderer Feature.
-You configure Altos using the Definition configuration files. You will attach these to your Sky Director in your scene. We'll do this now.
 
 ## Create the Altos Sky Director
 
-Altos includes a nifty editor feature that makes it easy to set up the Altos Sky Director in a new scene.
+To use Altos in a scene, you need to create a Sky Director. Here's how:
 
-In your menu bar, click GameObject -> Altos -> Sky Director.
+1. In your menu bar, click **GameObject** > **Altos** > **Sky Director**.
 
-Altos will create a new Sky Director GameObject in your scene.
-Altos will also create all the Definition configuration files that you need.
+![Sky Director Setup](/img/sky-director-setup.webp)
 
-![](/img/sky-director-setup.webp)
+Altos creates a new Sky Director GameObject in your scene.
 
-Altos also creates two children objects: the Sun and the Moon. These are set up with reasonable default settings. We will come back to these in a more focused article that will review how to use Sky Objects in Altos.
+Altos creates all the Definition configuration files that you need. These are colocated with your **Scene** in your **Project** window.
 
-![](/img/sun-setup.webp)
+Altos also instantiates two children objects: the **Sun** and the **Moon**. These are set up with reasonable default settings. These are the default [Sky Objects](sky-objects) that Altos builds when you create a new Sky Director. (You can use as many Sky Objects as you want in a Scene.)
+
+![Sun Configuration](/img/sun-setup.webp)
+
+## Add the Volumetric Cloud component
+
+You must add a `WeatherMap` component to an object in your scene to instantiate the volumetric cloud map. Here's how:
+
+1. In your menu bar, click **GameObject** > **Create Empty**.
+2. Select the new Game Object in the **Hierarchy** window.
+3. Click **Add Component** > **WeatherMap**.
 
 ## Set up your pre-transparency pass
 

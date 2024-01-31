@@ -38,7 +38,7 @@ const config: DocsThemeConfig = {
           property="og:description"
           content={frontMatter.description || 'Everything you need to build your game'}
         />
-        <link rel="icon" href="img/favicon.ico" type="image/ico" />
+        <link rel="icon" href="/img/favicon.ico" type="image/ico" />
       </>
     )
   },
