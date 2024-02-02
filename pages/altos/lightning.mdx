@@ -1,0 +1,49 @@
+# Lightning System Overview
+
+This documentation aims to provide a clear understanding of the Lightning System components and how to effectively integrate them into your projects.
+
+## System Overview
+
+The Altos Lightning System is designed to bring realistic and engaging lightning effects to your Unity scenes. It consists of modular components that allow you to control the generation, attraction, and response to lightning bolts. The system is built around the concept of strategies, providing flexibility in creating various lightning patterns and behaviors.
+
+- [Bolt Controller](/altos/lightning/bolt-controller)
+- [Bolt Strategy](/altos/lightning/bolt-strategy)
+- [Attractor System](/altos/lightning/attractor-system)
+- [Attractor Strategy](/altos/lightning/attractor-strategy)
+- [Events](/altos/lightning/events)
+
+## Quick Start
+
+1. Add a `LightningBoltController` to your Scene.
+2. Add one or more Prefabs that have a `LightningBoltStrategy` component implementation to your `LightningBoltController`.
+3. **Optional**: Add one or more LightningAttractors to the Scene.
+4. **Optional**: Add a `LightningEventDispatcher` to your Scene, then catch and respond to events.
+
+## Key Components
+
+### Lightning Bolt Controller
+
+- Centralized management of lightning generation.
+- Customizable frequency and strategies for lightning generation.
+- Example classes like `SimpleBolt` and `RadialBolt` demonstrate concrete implementations.
+
+### Lightning Attractor Controller
+
+- Manages attractors that influence lightning bolt behavior.
+- Enables the creation of custom attractor strategies.
+- Example class `SimpleAttractor` showcases a basic attractor implementation.
+
+### Lightning Bolt Strategy
+
+- Abstract class for creating custom lightning bolt generation strategies.
+- Provides a foundation for defining different lightning behaviors.
+
+### Lightning Attractor Strategy
+
+- Abstract class for creating custom lightning attractor strategies.
+- Defines methods for determining targets, priorities, and responses to lightning strikes.
+
+### Lightning Events
+
+- `BoltEvent` and `StrikeEvent` classes represent lightning-related events.
+- `LightningEventDispatcher` facilitates event dispatching and handling.
