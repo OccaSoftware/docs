@@ -1,0 +1,125 @@
+# Altos Custom Shader Integration Documentation
+
+Welcome to the Altos custom shader integration documentation. This guide will assist you in integrating Altos sky system with your custom shaders in Unity. Altos provides HLSL functions and native Shader Graph implementations.
+
+## Functions Overview
+
+### AltosFog
+
+```hlsl
+AltosFog(float2 ScreenPosition, float Distance)
+```
+
+Calculates atmospheric fog color based on screen position and distance.
+
+#### Parameters
+
+- `ScreenPosition` (*float2*): The screen position of the fragment.
+- `Distance` (*float*): The distance from the camera to the fragment.
+
+#### Returns
+
+The fog color and density as a *float4*.
+
+---
+
+### AltosFogBlend
+
+```hlsl
+AltosFogBlend(float2 ScreenPosition, float Distance, float3 InputColor)
+```
+
+Blends atmospheric fog with the input color.
+
+#### Parameters
+
+- `ScreenPosition` (*float2*): The screen position of the fragment.
+- `Distance` (*float*): The distance from the camera to the fragment.
+- `InputColor` (*float3*): The original color before fog blending.
+
+#### Returns
+
+The final blended color as a *float3*.
+
+---
+
+### AltosClouds
+
+```hlsl
+AltosClouds(float2 ScreenPosition)
+```
+
+Retrieves cloud color based on screen position.
+
+#### Parameters
+
+- `ScreenPosition` (*float2*): The screen position of the fragment.
+
+#### Returns
+
+The cloud color and density as a *float4*.
+
+---
+
+### AltosCloudsBlend
+
+```hlsl
+AltosCloudsBlend(float2 ScreenPosition, float3 InputColor)
+```
+
+Blends cloud color with the input color.
+
+#### Parameters
+
+- `ScreenPosition` (*float2*): The screen position of the fragment.
+- `InputColor` (*float3*): The original color before cloud blending.
+
+#### Returns
+
+The final blended color as a *float3*
+
+---
+
+## Usage Instructions
+
+To integrate Altos functions with your custom shaders, follow these steps:
+
+1. Import Altos into your Unity project.
+2. Include the Altos HLSL functions from `Packages/com.occasoftware.altos/ShaderLibrary/Altos.hlsl`.
+3. Use the desired Altos functions in your custom shaders according to your requirements.
+4. Optionally, use Shader Graph implementations of Altos functions.
+
+## Example Integration
+
+Here's an example of how to integrate Altos functions into a custom shader:
+
+```hlsl
+// Example Custom Shader with Altos Integration
+
+#include "Packages/com.occasoftware.altos/ShaderLibrary/Altos.hlsl"
+
+// Define shader properties and variables...
+
+void frag(Varyings input, out float4 fragColor : SV_Target)
+{
+    // Calculate distance from camera...
+    float distance = calculateDistance(input.worldPosition);
+
+    // Calculate fog color and density...
+    float3 fogColor;
+    float fogDensity;
+    AltosFogBlend(input.screenPosition.xy, distance, fogColor, fogDensity);
+
+    // Calculate cloud color and density...
+    float3 cloudColor;
+    float cloudDensity;
+    AltosClouds(input.screenPosition.xy, cloudColor, cloudDensity);
+
+    // Blend fog and cloud with input color...
+    float3 finalColor = input.baseColor.rgb;
+    finalColor = lerp(finalColor, fogColor, fogDensity);
+    finalColor = lerp(finalColor, cloudColor, cloudDensity);
+
+    fragColor = float4(finalColor, 1.0);
+}
+```
