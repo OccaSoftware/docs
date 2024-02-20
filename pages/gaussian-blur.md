@@ -1,7 +1,7 @@
 # Gaussian Blur
 
 Gaussian Blur is a post-process feature that supports blurring of scene geometry and UI elements in 2D and 3D scenes.
-Download [Gaussian Blur](https://www.occasoftware.com/assets/gaussian-blur)
+Download [Gaussian Blur](https://www.occasoftware.com/p/gaussian-blur)
 
 ## Installation
 
