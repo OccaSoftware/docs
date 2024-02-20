@@ -4,7 +4,7 @@ This article will describe how to get started with our Altos package for Unity U
 
 ## Install Altos
 
-1. Download [Altos](https://occasoftware.com/assets/altos).
+1. Download [Altos](https://occasoftware.com/p/altos).
 2. Import to Unity.
 
 When you import Altos to your project, you will see a new directory in your **Packages** folder: `/Packages/Altos/`.
