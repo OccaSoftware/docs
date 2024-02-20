@@ -7,7 +7,7 @@ Get started quickly with the default settings in a Volume using the Buto overrid
 
 ## Install
 
-1. Download [Buto](https://www.occasoftware.com/assets/buto).
+1. Download [Buto](https://www.occasoftware.com/p/buto).
 2. Import to Unity.
 
 ## Adding Buto to Your Renderer
